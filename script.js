@@ -1,79 +1,112 @@
-// Initialize AOS
+// // Initialize AOS
 AOS.init({
   duration: 1000,
   once: true,
   offset: 100,
 });
 
-// Projects Data
 const projects = [
   {
     id: 1,
+    title: "OPSPILOT – RAG Document Intelligence Platform",
+    description:
+      "End-to-end RAG document intelligence platform for querying complex operational PDFs with contextual grounding, semantic retrieval, and real-time page-level source citations.",
+    techStack: [
+      "FastAPI",
+      "React",
+      "Vite",
+      "LangChain",
+      "OpenAI Embeddings",
+      "ChromaDB",
+      "Tailwind CSS",
+      "RAG",
+    ],
+    category: "rag",
+    image: "images/opspilot.png",
+    liveLink: "https://ops-pilot-frontend.onrender.com/",
+    githubLink: "https://github.com/mdumar0001/ops-pilot",
+  },
+
+  {
+    id: 2,
     title: "Smart Agriculture System",
     description:
-      "ML based system for smart crop recommendation and yield prediction to optimize farming practices and increase productivity.",
-    techStack: ["Python", "NLTK", "Flask", "sklearn", "TensorFlow", "pandas"],
+      "Machine learning system for crop recommendation and yield prediction using soil and climate parameters.",
+    techStack: [
+      "Python",
+      "Scikit-Learn",
+      "XGBoost",
+      "Streamlit",
+      "Pandas",
+      "NumPy",
+    ],
     category: "aiml",
     image: "images/smart_agriculture.png",
     liveLink: "https://smart-agriculture-system-he49.onrender.com",
     githubLink: "https://github.com/mdumar0001/Smart-Agriculture-System",
   },
+
   {
-    id: 2,
-    title: "AI Code Debugger Fixer & Translator",
+    id: 3,
+    title: "AI Code Debugger, Fixer & Translator",
     description:
-      "AI-powered tool that analyzes code snippets, identifies bugs, provides fixes, and translates code between programming languages.",
+      "AI-powered developer platform for code generation, bug detection, context-aware fixes, optimization, and cross-language translation.",
     techStack: [
       "React",
-      "Express",
-      "Google-Gemini",
+      "Node.js",
+      "Express.js",
+      "Google Gemini",
       "CodeMirror",
       "MongoDB",
-      "Tailwind CSS",
+      "JWT",
     ],
     category: "aiml",
     image: "images/ai_code_debugger.png",
     liveLink: "https://code-debugger-fixer-translator-2-clients.onrender.com/",
     githubLink: "https://github.com/mdumar0001/Code-Debugger-Fixer-Translator",
   },
+
   {
-    id: 3,
-    title: "Doctor's appointment booking system",
+    id: 4,
+    title: "Doctor's Appointment System – PRESCRIPTO",
     description:
-      "MERN stack application for booking doctor appointments with user authentication, doctor profiles, and appointment scheduling features.",
-    techStack: ["React", "Node.js", "MongoDB", "Express"],
+      "Full-stack appointment management platform for booking, scheduling, payments, and role-based patient, doctor, and admin workflows.",
+    techStack: ["React", "Node.js", "Express.js", "MongoDB", "JWT", "Stripe"],
     category: "mern",
     image: "images/doctors.png",
     liveLink: "https://prescripto-alpha-cyan.vercel.app/",
     githubLink: "https://github.com/mdumar0001/PRESCRIPTO",
   },
+
   {
-    id: 4,
+    id: 5,
     title: "MERN E-Commerce Platform",
     description:
-      "Full-stack e-commerce platform with user authentication, product management, shopping cart, and payment integration using Stripe.",
-    techStack: ["React", "Node.js", "MongoDB", "Express", "Stripe"],
+      "Full-stack e-commerce platform with product catalog, cart, order processing, Stripe payments, inventory management, and role-based dashboards.",
+    techStack: ["React", "Node.js", "Express.js", "MongoDB", "Stripe", "JWT"],
     category: "mern",
     image: "images/ecommerce.png",
     liveLink: "https://umar-stores1.vercel.app/",
     githubLink: "https://github.com/mdumar0001/Umar-Stores1",
   },
+
   {
-    id: 5,
+    id: 6,
     title: "Responsive Burger Website",
     description:
-      "Built responsive burger website with scroll-triggered animations using ScrollReveal, implemented dynamic navbar that highlights sections on scroll.",
+      "Responsive burger website with scroll-triggered animations and a dynamic navigation bar with active section highlighting.",
     techStack: ["HTML", "CSS", "JavaScript", "ScrollReveal"],
     category: "html-css-js",
     image: "images/burger.png",
     liveLink: "https://responsive-burger-website-qbe9.vercel.app",
     githubLink: "https://github.com/mdumar0001/responsive-burger-website",
   },
+
   {
-    id: 6,
+    id: 7,
     title: "Responsive Chips Ordering Platform",
     description:
-      "Developed a custom chips system mimicking material design principles, implemented responsive behavior using CSS media queries, utilizing DOM manipulation and custom scroll animation library.",
+      "Responsive chips ordering website using DOM manipulation, CSS media queries, and custom scroll animations.",
     techStack: ["HTML", "CSS", "JavaScript"],
     category: "html-css-js",
     image: "images/preview.png",
@@ -82,293 +115,379 @@ const projects = [
   },
 ];
 
-// Loader
-window.addEventListener("load", () => {
+// ========================================
+// DOM READY
+// ========================================
+
+document.addEventListener("DOMContentLoaded", function () {
+  // ========================================
+  // AOS ANIMATION
+  // ========================================
+
+  if (typeof AOS !== "undefined") {
+    AOS.init({
+      duration: 1000,
+      once: true,
+      offset: 100,
+    });
+  }
+
+  // ========================================
+  // LOADER
+  // ========================================
+
   const loader = document.getElementById("loader");
-  setTimeout(() => {
-    loader.style.opacity = "0";
-    setTimeout(() => {
-      loader.style.display = "none";
-    }, 500);
-  }, 1000);
-});
 
-// Custom Cursor
-const cursor = document.querySelector(".cursor");
-const cursorFollower = document.querySelector(".cursor-follower");
+  if (loader) {
+    setTimeout(function () {
+      loader.style.opacity = "0";
 
-document.addEventListener("mousemove", (e) => {
-  cursor.style.left = e.clientX + "px";
-  cursor.style.top = e.clientY + "px";
-
-  setTimeout(() => {
-    cursorFollower.style.left = e.clientX + "px";
-    cursorFollower.style.top = e.clientY + "px";
-  }, 100);
-});
-
-document.addEventListener("mouseenter", () => {
-  cursor.style.opacity = "1";
-  cursorFollower.style.opacity = "1";
-});
-
-document.addEventListener("mouseleave", () => {
-  cursor.style.opacity = "0";
-  cursorFollower.style.opacity = "0";
-});
-
-// Hover effect on buttons
-const hoverElements = document.querySelectorAll("a, button, .btn");
-hoverElements.forEach((el) => {
-  el.addEventListener("mouseenter", () => {
-    cursor.style.transform = "scale(1.5)";
-    cursorFollower.style.transform = "scale(1.5)";
-  });
-  el.addEventListener("mouseleave", () => {
-    cursor.style.transform = "scale(1)";
-    cursorFollower.style.transform = "scale(1)";
-  });
-});
-
-// Dark Mode Toggle
-const themeToggle = document.getElementById("themeToggle");
-let isDarkMode = true;
-
-themeToggle.addEventListener("click", () => {
-  if (isDarkMode) {
-    document.body.setAttribute("data-theme", "light");
-    themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
-    isDarkMode = false;
-  } else {
-    document.body.setAttribute("data-theme", "dark");
-    themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
-    isDarkMode = true;
+      setTimeout(function () {
+        loader.style.display = "none";
+      }, 500);
+    }, 700);
   }
-});
 
-// Set default theme
-document.body.setAttribute("data-theme", "dark");
+  // ========================================
+  // THEME TOGGLE
+  // ========================================
 
-// Header scroll effect
-const header = document.getElementById("header");
-window.addEventListener("scroll", () => {
-  if (window.scrollY > 100) {
-    header.classList.add("scrolled");
-  } else {
-    header.classList.remove("scrolled");
+  const themeToggle = document.getElementById("themeToggle");
+
+  let isDarkMode = true;
+
+  document.body.setAttribute("data-theme", "dark");
+
+  if (themeToggle) {
+    themeToggle.addEventListener("click", function () {
+      isDarkMode = !isDarkMode;
+
+      document.body.setAttribute("data-theme", isDarkMode ? "dark" : "light");
+
+      themeToggle.innerHTML = isDarkMode
+        ? '<i class="fas fa-moon"></i>'
+        : '<i class="fas fa-sun"></i>';
+    });
   }
-});
 
-// Mobile Menu
-const menuBtn = document.querySelector(".menu-btn");
-const navLinks = document.querySelector(".nav-links");
+  // ========================================
+  // HEADER SCROLL
+  // ========================================
 
-menuBtn.addEventListener("click", () => {
-  menuBtn.classList.toggle("active");
-  navLinks.classList.toggle("active");
-});
+  const header = document.getElementById("header");
 
-// Close mobile menu when clicking on a link
-document.querySelectorAll(".nav-links a").forEach((link) => {
-  link.addEventListener("click", () => {
-    menuBtn.classList.remove("active");
-    navLinks.classList.remove("active");
+  window.addEventListener("scroll", function () {
+    if (header) {
+      header.classList.toggle("scrolled", window.scrollY > 100);
+    }
   });
-});
 
-// Smooth scrolling
-document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-  anchor.addEventListener("click", function (e) {
-    e.preventDefault();
-    const target = document.querySelector(this.getAttribute("href"));
-    if (target) {
+  // ========================================
+  // MOBILE MENU
+  // ========================================
+
+  const menuBtn = document.querySelector(".menu-btn");
+  const navLinks = document.querySelector(".nav-links");
+
+  if (menuBtn && navLinks) {
+    menuBtn.addEventListener("click", function () {
+      menuBtn.classList.toggle("active");
+      navLinks.classList.toggle("active");
+    });
+
+    navLinks.querySelectorAll("a").forEach(function (link) {
+      link.addEventListener("click", function () {
+        menuBtn.classList.remove("active");
+        navLinks.classList.remove("active");
+      });
+    });
+  }
+
+  // ========================================
+  // SMOOTH SCROLL
+  // ========================================
+
+  document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
+    anchor.addEventListener("click", function (e) {
+      const href = this.getAttribute("href");
+
+      if (!href || href === "#") {
+        return;
+      }
+
+      const target = document.querySelector(href);
+
+      if (!target) {
+        return;
+      }
+
+      e.preventDefault();
+
       target.scrollIntoView({
         behavior: "smooth",
         block: "start",
       });
+    });
+  });
 
-      // Update active nav link
-      document.querySelectorAll(".nav-links a").forEach((link) => {
-        link.classList.remove("active");
+  // ========================================
+  // TYPED TEXT
+  // ========================================
+
+  const typedTextSpan = document.querySelector(".typed-text");
+
+  if (typedTextSpan) {
+    const textArray = [
+      "MERN Stack Developer",
+      "AI/ML Enthusiast",
+      "RAG / GenAI Developer",
+      "Full Stack Developer",
+    ];
+
+    let textIndex = 0;
+    let charIndex = 0;
+    let deleting = false;
+
+    function typeLoop() {
+      const currentText = textArray[textIndex];
+
+      if (!deleting) {
+        typedTextSpan.textContent = currentText.substring(0, charIndex);
+
+        charIndex++;
+      } else {
+        typedTextSpan.textContent = currentText.substring(0, charIndex);
+
+        charIndex--;
+      }
+
+      if (!deleting && charIndex > currentText.length) {
+        deleting = true;
+
+        setTimeout(typeLoop, 1800);
+
+        return;
+      }
+
+      if (deleting && charIndex < 0) {
+        deleting = false;
+
+        charIndex = 0;
+
+        textIndex = (textIndex + 1) % textArray.length;
+      }
+
+      setTimeout(typeLoop, deleting ? 45 : 90);
+    }
+
+    typeLoop();
+  }
+
+  // ========================================
+  // PROJECTS
+  // ========================================
+
+  function loadProjects(filter) {
+    if (!filter) {
+      filter = "all";
+    }
+
+    const projectsGrid = document.getElementById("projectsGrid");
+
+    if (!projectsGrid) {
+      console.error("projectsGrid element not found.");
+
+      return;
+    }
+
+    let filteredProjects;
+
+    if (filter === "all") {
+      filteredProjects = projects;
+    } else {
+      filteredProjects = projects.filter(function (project) {
+        return project.category === filter;
       });
-      this.classList.add("active");
     }
-  });
-});
 
-// Update active nav link on scroll
-window.addEventListener("scroll", () => {
-  let current = "";
-  const sections = document.querySelectorAll("section");
+    projectsGrid.innerHTML = "";
 
-  sections.forEach((section) => {
-    const sectionTop = section.offsetTop;
-    const sectionHeight = section.clientHeight;
-    if (scrollY >= sectionTop - 200) {
-      current = section.getAttribute("id");
-    }
-  });
-
-  document.querySelectorAll(".nav-links a").forEach((link) => {
-    link.classList.remove("active");
-    if (link.getAttribute("href") === `#${current}`) {
-      link.classList.add("active");
-    }
-  });
-});
-
-// Typed Text Effect
-const typedTextSpan = document.querySelector(".typed-text");
-const textArray = [
-  "MERN Stack Developer",
-  "AI/ML Enthusiast",
-  "Problem Solver",
-  "Full Stack Developer",
-];
-let textArrayIndex = 0;
-let charIndex = 0;
-
-function type() {
-  if (charIndex < textArray[textArrayIndex].length) {
-    typedTextSpan.textContent += textArray[textArrayIndex].charAt(charIndex);
-    charIndex++;
-    setTimeout(type, 100);
-  } else {
-    setTimeout(erase, 2000);
-  }
-}
-
-function erase() {
-  if (charIndex > 0) {
-    typedTextSpan.textContent = textArray[textArrayIndex].substring(
-      0,
-      charIndex - 1,
-    );
-    charIndex--;
-    setTimeout(erase, 50);
-  } else {
-    textArrayIndex++;
-    if (textArrayIndex >= textArray.length) textArrayIndex = 0;
-    setTimeout(type, 500);
-  }
-}
-
-setTimeout(type, 1000);
-
-// Load Projects
-function loadProjects(filter = "all") {
-  const projectsGrid = document.getElementById("projectsGrid");
-  if (!projectsGrid) return;
-
-  let filteredProjects = projects;
-  if (filter !== "all") {
-    filteredProjects = projects.filter((p) => p.category === filter);
-  }
-
-  projectsGrid.innerHTML = filteredProjects
-    .map(
-      (project) => `
-        <div class="project-card" data-aos="fade-up">
-            <div class="project-image">
-                <img src="${project.image}" alt="${project.title}">
-                <div class="project-overlay">
-                    ${project.liveLink !== "#" ? `<a href="${project.liveLink}" target="_blank"><i class="fas fa-external-link-alt"></i></a>` : ""}
-                    ${project.githubLink !== "#" ? `<a href="${project.githubLink}" target="_blank"><i class="fab fa-github"></i></a>` : ""}
-                </div>
-            </div>
-            <div class="project-info">
-                <h3>${project.title}</h3>
-                <p>${project.description.substring(0, 100)}${project.description.length > 100 ? "..." : ""}</p>
-                <div class="project-tech">
-                    ${project.techStack.map((tech) => `<span class="tech-tag">${tech}</span>`).join("")}
-                </div>
-            </div>
+    if (filteredProjects.length === 0) {
+      projectsGrid.innerHTML = `
+        <div class="no-projects">
+          <p>No projects found.</p>
         </div>
-    `,
-    )
-    .join("");
-}
+      `;
 
-// Project Filters
-document.querySelectorAll(".filter-btn").forEach((btn) => {
-  btn.addEventListener("click", () => {
-    document
-      .querySelectorAll(".filter-btn")
-      .forEach((b) => b.classList.remove("active"));
-    btn.classList.add("active");
-    const filter = btn.getAttribute("data-filter");
-    loadProjects(filter);
-  });
-});
+      return;
+    }
 
-// Contact Form
-const contactForm = document.getElementById("contactForm");
-if (contactForm) {
-  contactForm.addEventListener("submit", async (e) => {
-    e.preventDefault();
+    filteredProjects.forEach(function (project) {
+      const projectCard = document.createElement("div");
 
-    const formData = {
-      name: document.getElementById("name").value,
-      email: document.getElementById("email").value,
-      subject: document.getElementById("subject").value,
-      message: document.getElementById("message").value,
-    };
+      projectCard.className = "project-card";
 
-    // Show success message
-    Swal.fire({
-      title: "Message Sent!",
-      text: "Thank you for reaching out. I will get back to you soon!",
-      icon: "success",
-      confirmButtonColor: "#6c63ff",
-      background: "#1a1a2e",
-      color: "#fff",
+      projectCard.setAttribute("data-aos", "fade-up");
+
+      projectCard.innerHTML = `
+
+        <div class="project-image">
+
+          <img
+            src="${project.image}"
+            alt="${project.title}"
+            loading="lazy"
+            onerror="
+              this.onerror=null;
+              this.src='https://via.placeholder.com/800x500?text=Project';
+            "
+          >
+
+          <div class="project-overlay">
+
+            <a
+              href="${project.liveLink}"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Live project"
+            >
+              <i class="fas fa-external-link-alt"></i>
+            </a>
+
+            <a
+              href="${project.githubLink}"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="GitHub repository"
+            >
+              <i class="fab fa-github"></i>
+            </a>
+
+          </div>
+
+        </div>
+
+
+        <div class="project-info">
+
+          <h3>
+            ${project.title}
+          </h3>
+
+          <p>
+            ${project.description}
+          </p>
+
+          <div class="project-tech">
+
+            ${project.techStack
+              .map(function (tech) {
+                return `
+                  <span class="tech-tag">
+                    ${tech}
+                  </span>
+                `;
+              })
+              .join("")}
+
+          </div>
+
+        </div>
+
+      `;
+
+      projectsGrid.appendChild(projectCard);
     });
 
-    contactForm.reset();
-  });
-}
-
-// Download CV
-document.getElementById("downloadCV")?.addEventListener("click", (e) => {
-  e.preventDefault();
-  Swal.fire({
-    title: "CV Download",
-    text: "CV download feature coming soon!",
-    icon: "info",
-    confirmButtonColor: "#6c63ff",
-    background: "#1a1a2e",
-    color: "#fff",
-  });
-});
-
-// Initialize projects
-loadProjects();
-
-// Add animation to cards on scroll
-const observerOptions = {
-  threshold: 0.1,
-  rootMargin: "0px 0px -50px 0px",
-};
-
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach((entry) => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add("fade-in-up");
+    if (typeof AOS !== "undefined") {
+      AOS.refresh();
     }
-  });
-}, observerOptions);
+  }
 
-document
-  .querySelectorAll(".skill-card, .project-card, .cert-card")
-  .forEach((el) => {
-    observer.observe(el);
+  // ========================================
+  // PROJECT FILTERS
+  // ========================================
+
+  const filterButtons = document.querySelectorAll(".filter-btn");
+
+  filterButtons.forEach(function (button) {
+    button.addEventListener("click", function () {
+      filterButtons.forEach(function (btn) {
+        btn.classList.remove("active");
+      });
+
+      button.classList.add("active");
+
+      const filter = button.getAttribute("data-filter") || "all";
+
+      loadProjects(filter);
+    });
   });
 
-// Parallax effect for hero
-window.addEventListener("scroll", () => {
-  const scrolled = window.pageYOffset;
-  const hero = document.querySelector(".hero");
-  if (hero) {
-    hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+  // Load projects immediately
+  loadProjects("all");
+
+  // ========================================
+  // CONTACT FORM
+  // ========================================
+
+  const contactForm = document.getElementById("contactForm");
+
+  if (contactForm) {
+    contactForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const name = document.getElementById("name")?.value.trim() || "";
+
+      const email = document.getElementById("email")?.value.trim() || "";
+
+      const subject =
+        document.getElementById("subject")?.value.trim() || "Portfolio Contact";
+
+      const message = document.getElementById("message")?.value.trim() || "";
+
+      if (!name || !email || !message) {
+        alert("Please fill in all required fields.");
+
+        return;
+      }
+
+      const body = `Name: ${name}\n` + `Email: ${email}\n\n` + `${message}`;
+
+      const mailto =
+        `mailto:mdumar84002021@gmail.com` +
+        `?subject=${encodeURIComponent(subject)}` +
+        `&body=${encodeURIComponent(body)}`;
+
+      window.location.href = mailto;
+    });
+  }
+
+  // ========================================
+  // INTERSECTION OBSERVER
+  // ========================================
+
+  if ("IntersectionObserver" in window) {
+    const observer = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("fade-in-up");
+
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px",
+      },
+    );
+
+    document
+      .querySelectorAll(".skill-card, .project-card, .cert-card")
+      .forEach(function (element) {
+        observer.observe(element);
+      });
   }
 });
